@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Anita 🎂</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+
+<body>
+
+
+
+<div class="container">
+    <h1>🎂 Happy Birthday <span class="name">Anita</span> 🎉</h1>
+
+    <div class="type" id="typeText"></div>
+
+    <button onclick="showSection('message')">💌 Message</button>
+    <button onclick="showSection('memories')">🌸 Special Lines</button>
+    <button onclick="showSection('surprise')" class="secondary">🎁 Surprise</button>
+    <button onclick="playMusic()">🎵 Music</button>
+
+    <div id="message" class="section">
+        <p>
+            Dear Anita,<br><br>
+            Today is not just your birthday,  
+            it’s a reminder of how special you are 💖  
+            May your smile never fade and  
+            your dreams always find their way ✨
+        </p>
+    </div>
+
+    <div id="memories" class="section">
+        <p>
+            🌷 You bring positivity everywhere<br>
+            🌷 Your presence feels calming<br>
+            🌷 You deserve happiness every day<br>
+            🌷 This day is as beautiful as you
+        </p>
+    </div>
+
+    <div id="surprise" class="section">
+        <p>
+            🎉 Surprise! 🎉<br><br>
+            Someone cared enough to create  
+            a whole website just to make  
+            you smile today 💕
+        </p>
+    </div>
+
+    <div class="footer">
+        Made with ❤️ just for you
+    </div>
+</div>
+
+<audio id="song">
+<source src="Happy birthdayanita.mp3">
+</audio>
+
+
+<script>
+for(let i=0;i<12;i++){
+    let b=document.createElement("div");
+    b.className="balloon";
+    b.style.left=Math.random()*100+"vw";
+    b.style.background=`hsl(${Math.random()*360},80%,60%)`;
+    b.style.animationDuration=6+Math.random()*5+"s";
+    document.body.appendChild(b);
+}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3,#fad0c4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow-x:hidden;
+    color:#fff;
+}
+
+.container{
+    width:92%;
+    max-width:420px;
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(18px);
+    border-radius:25px;
+    padding:30px 22px;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,0.3);
+    animation:fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(30px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+h1{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.name{
+    color:#ffe600;
+    font-weight:700;
+}
+
+.type{
+    min-height:50px;
+    font-size:16px;
+    margin:15px 0;
+}
+
+.section{
+    margin-top:20px;
+    display:none;
+    animation:fadeIn 1s ease;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border:none;
+    border-radius:30px;
+    background:#ff4081;
+    color:#fff;
+    font-size:15px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e73370;
+}
+
+.secondary{
+    background:#00e5ff;
+    color:#003344;
+}
+
+.footer{
+    margin-top:20px;
+    font-size:13px;
+    opacity:0.8;
+}
+
+/* Balloons */
+.balloon{
+    position:absolute;
+    bottom:-100px;
+    width:35px;
+    height:45px;
+    border-radius:50%;
+    animation:float 8s linear infinite;
+}
+
+.balloon::after{
+    content:"";
+    width:2px;
+    height:30px;
+    background:#fff;
+    position:absolute;
+    top:45px;
+    left:50%;
+}
+
+@keyframes float{
+    to{transform:translateY(-120vh)}
+}
+</style>
+<script>
+const text="Wishing you love, laughter, and a year full of beautiful moments ✨";
+let i=0;
+function typeEffect(){
+    if(i<text.length){
+        document.getElementById("typeText").innerHTML+=text.charAt(i);
+        i++;
+        setTimeout(typeEffect,60);
+    }
+}
+typeEffect();
+
+function showSection(id){
+    document.querySelectorAll(".section").forEach(s=>s.style.display="none");
+    document.getElementById(id).style.display="block";
+    confetti();
+}
+
+function playMusic(){
+    document.getElementById("song").play();
+}
+
+function confetti(){
+    for(let i=0;i<80;i++){
+        let c=document.createElement("div");
+        c.style.position="fixed";
+        c.style.width="7px";
+        c.style.height="7px";
+        c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+        c.style.left=Math.random()*100+"vw";
+        c.style.top="-10px";
+        c.style.borderRadius="50%";
+        c.style.animation="fall 3s linear";
+        document.body.appendChild(c);
+        setTimeout(()=>c.remove(),3000);
+    }
+}
+
+const style=document.createElement("style");
+style.innerHTML="@keyframes fall{to{transform:translateY(110vh)}}";
+document.head.appendChild(style);
+</script>
+
+</body>
+</html>
